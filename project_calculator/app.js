@@ -26,6 +26,11 @@ const keyClick = (event) => {
     }
 }
 
+const calculatorDisplay = (event) => {
+    
+}
+
+
 
 // AddEventListener 
 keys.addEventListener("click", keyClick);
