@@ -28,10 +28,12 @@ body .calculator .calculator__display {
   text-align: end;
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
-  font-size: 6rem;
+  align-items: flex-end;
+  font-size: 3rem;
   color: white;
   flex-wrap: wrap;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 body .calculator .calculator__keys {
   padding-top: 50px;
@@ -78,4 +80,4 @@ body .calculator #logo {
 }
 body .calculator #logo span {
   color: white;
-}
+}/*# sourceMappingURL=main.css.map */
