@@ -31,6 +31,7 @@ body .calculator .calculator__display {
   align-items: baseline;
   font-size: 6rem;
   color: white;
+  flex-wrap: wrap;
 }
 body .calculator .calculator__keys {
   padding-top: 50px;
@@ -77,4 +78,4 @@ body .calculator #logo {
 }
 body .calculator #logo span {
   color: white;
-}/*# sourceMappingURL=style.css.map */
+}
