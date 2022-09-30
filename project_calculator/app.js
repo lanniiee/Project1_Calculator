@@ -27,9 +27,14 @@ const keyClick = (event) => {
 }
 
 const calculatorDisplay = (event) => {
-    
+    if (event.target.matches('button')) {
+        const key = event.target;
+        const action = key.dataset.action;
+        const content = key.textContent;
+        const displayOfCalculator = display.textContent;
+        
+    }
 }
-
 
 
 // AddEventListener 
