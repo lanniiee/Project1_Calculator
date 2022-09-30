@@ -10,4 +10,6 @@
 
 5. Make modules are scss to keep it clean.
 
-6.
+6. move it all to new style files. 
+
+7. 
