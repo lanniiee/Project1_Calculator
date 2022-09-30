@@ -8,7 +8,14 @@ const keyClick = (event) => {
     if (event.target.matches("button")) {
         const key = event.target;
         const action = key.dataset.action;
+        const keyContent = key.innerText;
+        const numberDisplay = display.innerText;
         if (!action) {
+            if (numberDisplay === "0") {
+                display.innerText = keyContent;
+            } else {
+                display.innerText = numberDisplay + keyContent;
+            }
             console.log("number key!");
         } else if (action === "addition" || action === "subtraction" || action === "multiplication" || action === "division") {
             console.log("operator keys!");
