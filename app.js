@@ -1,4 +1,4 @@
-// Adding Element
+// Variables
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const display = document.querySelector(".calculator__display");
@@ -7,26 +7,35 @@ const decimal = document.querySelector("#decimal");
 let previousDisplay = [];
 let currentDisplay = [];
 
+
 // Functions
 const keyClick = (event) => {
-    if (event.target.matches("button")) {  //declare new variables to be able to reuse
-        const key = event.target;
+    if (event.target.matches("button")) {  
+        const key = event.target;   // need to write out pseudoCode
         const action = key.dataset.action;
         const keyContent = key.innerText;
         const numberDisplay = display.innerText;
-        const lastKeyClicked = calculator.dataset.lastKeyClicked; // create a new variable to be able to reuse to check for conditions.
+        const lastKeyClicked = calculator.dataset.lastKeyClicked; 
         
-        if (!action) {   // if the button is not an action then display on calculator display
+        if (!action) {   
             calculator.dataset.lastKeyClicked = "number";
-            if (numberDisplay === "0" || lastKeyClicked === "operator") { //if display number is "0" which is default then replace with the key that is clicked
+            if (numberDisplay === "0" || lastKeyClicked === "operator") { 
                 display.innerText = keyContent; 
-            } else {      // if display number is anything else, concat the display number with the clicked button
+            } else {      
                 display.innerText = numberDisplay + keyContent;
             }
         }
 
+        if (action === "decimal") {
+            if (!numberDisplay.includes(".")) {
+                display.innerText = numberDisplay + ".";
+            } else {
+                display.innerText = numberDisplay;
+            }
+        }
+
         if (action === "addition" || action === "subtraction" || action === "multiplication" || action === "division") {
-            calculator.dataset.lastKeyClicked = "operator";    //if key clicked is an operation key then create new data attribute called last-key-clicked and make it equal to operator
+            calculator.dataset.lastKeyClicked = "operator";    
             calculator.dataset.firstValue = numberDisplay; 
             if (action === "addition") {
                 calculator.dataset.operator = "addition";
@@ -63,7 +72,7 @@ const keyClick = (event) => {
         
         if (action === "percentage") {
             calculator.dataset.lastKeyClicked = "percentage";
-            const formatedNumber = parseFloat(numberDisplay) * 100; 
+            const formatedNumber = parseFloat(numberDisplay) * 100;
             display.innerText = formatedNumber + "%";
         }
         
@@ -83,8 +92,5 @@ const keyClick = (event) => {
     }
 }
 
-// need to log number to array
-// do maths function depending on operations
 // AddEventListener 
 keys.addEventListener("click", keyClick);
-
