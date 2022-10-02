@@ -12,4 +12,10 @@
 
 6. move it all to new style files. 
 
-7. 
+7. create new variables (using querySelector)
+
+8. write functions for each action
+
+9. addEventListener
+
+10. Functions and loops for calculation
