@@ -74,7 +74,11 @@ const keyClick = (event) => {
         
         if (action === "negativepositive") {
             calculator.dataset.lastKeyClicked = "negative";
-            console.log("Negative key!");
+            if (!numberDisplay.includes("-")) {
+                display.innerText = "-" + numberDisplay;
+            } else if (numberDisplay.includes("-")) {
+                display.innerText = numberDisplay.replace("-", "");
+            }
         }
     }
 }
