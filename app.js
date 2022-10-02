@@ -63,12 +63,12 @@ const keyClick = (event) => {
         
         if (action === "percentage") {
             calculator.dataset.lastKeyClicked = "percentage";
-            console.log("percentage key!");
+            const formatedNumber = parseFloat(numberDisplay) * 100; 
+            display.innerText = formatedNumber + "%";
         }
         
         if (action === "clearing") {
             calculator.dataset.lastKeyClicked = "clear";
-            console.log("All clear key!");
             display.innerText = 0;
             }
         
