@@ -19,7 +19,7 @@ const keyClick = (event) => {
         
         if (!action) {   
             calculator.dataset.lastKeyClicked = "number";
-            if (numberDisplay === "0" || lastKeyClicked === "operator") { 
+            if (numberDisplay === "0" || lastKeyClicked === "operator" || lastKeyClicked === "percentage") { 
                 display.innerText = keyContent; 
             } else {      
                 display.innerText = numberDisplay + keyContent;
