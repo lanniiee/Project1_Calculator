@@ -79,12 +79,12 @@ const keyClick = (event) => {
             display.innerText = "0";
             }
         
-        if (action === "negativepositive") { //
+        if (action === "negativepositive") { // if action attribute = negativepositive, update last-key-clicked = negative. 
             calculator.dataset.lastKeyClicked = "negative";
-            if (numberDisplay != "0") {
-                if (!numberDisplay.includes("-")) {
-                display.innerText = "-" + numberDisplay;
-                } else if (numberDisplay.includes("-")) {
+            if (numberDisplay != "0") { // only work if number display is not 0 as 0 a is natural number
+                if (!numberDisplay.includes("-")) { // if display does not have negative sign then we can add it in.
+                display.innerText = "-" + numberDisplay; // display update with negative sign
+                } else if (numberDisplay.includes("-")) { // if display does have negative sign then we remove it to turn it back to positive
                 display.innerText = numberDisplay.replace("-", "");
                 }
             }
