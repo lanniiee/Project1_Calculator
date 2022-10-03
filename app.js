@@ -68,23 +68,25 @@ const keyClick = (event) => {
         
         if (action === "percentage") { // if action attribute = percentage then update last-key-clicked = percentage. 
             calculator.dataset.lastKeyClicked = "percentage";
-            if (!numberDisplay.includes("%")) {
+            if (!numberDisplay.includes("%")) { // if display does not have % then take number displayed and multiply by 100 and concatenate with % to convert to percentage
                 const formatedNumber = parseFloat(numberDisplay) * 100;
                 display.innerText = formatedNumber + "%";
             }
         }
         
-        if (action === "clearing") {
+        if (action === "clearing") { // if action attribute = clearing, then update display with 0 and update last-key-clicked = clear
             calculator.dataset.lastKeyClicked = "clear";
-            display.innerText = 0;
+            display.innerText = "0";
             }
         
-        if (action === "negativepositive") {
+        if (action === "negativepositive") { //
             calculator.dataset.lastKeyClicked = "negative";
-            if (!numberDisplay.includes("-")) {
+            if (numberDisplay != "0") {
+                if (!numberDisplay.includes("-")) {
                 display.innerText = "-" + numberDisplay;
-            } else if (numberDisplay.includes("-")) {
+                } else if (numberDisplay.includes("-")) {
                 display.innerText = numberDisplay.replace("-", "");
+                }
             }
         }
     }
