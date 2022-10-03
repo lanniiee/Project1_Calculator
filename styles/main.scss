@@ -58,7 +58,7 @@ body {
                 border-radius: 5px;
             }
             button:active {
-                box-shadow: inset 0px 0px 4px 5px $display-color;
+                box-shadow: inset 0px 0px 4px 5px $display-color, 0px 0px 3px 3px $display-color;
             }
             #calculate {
                 height: 100%;
@@ -67,9 +67,11 @@ body {
                 grid-row: 3/7;
             }#percentage {
                 grid-column: 1/3;
+                background-color: #201c2d;
                 } 
             #negativepositive {
                 grid-column: 3/5;
+                background-color: #201c2d;
                 }
             #clearing {
                 background-color: rgb(255, 75, 75);
@@ -82,7 +84,7 @@ body {
             align-items: center;
             font-size: 30px;
             height: 50px;
-            color: #BB6B00;
+            color: $backup-color;
             span {
                 color: white;
             }

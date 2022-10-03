@@ -5,10 +5,10 @@ const display = document.querySelector(".calculator__display");
 
 // Functions
 const keyClick = (event) => {
-    if (event.target.matches("button")) {  // below are new variables when a button is clickedß
+    if (event.target.matches("button")) {  // below are new variables when a button is clicked
         const action = event.target.dataset.action;  //new variable for condition to access all action buttons  
         const keyContent = event.target.innerText; // new variable representing the key value
-        const numberDisplay = display.innerText; // new variable for the number displayed on screen and to use to update
+        const numberDisplay = display.innerText; // new variable for the number displayed on screen and to use to update everytime we click a button
         const lastKeyClicked = calculator.dataset.lastKeyClicked; // custom data attribute which will be useful when dealing with conditions
         
         if (!action) {   // If button does not have an action attribute then it must be a number. 
