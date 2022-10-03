@@ -5,17 +5,21 @@ const display = document.querySelector(".calculator__display");
 
 // Functions
 const keyClick = (event) => {
-    if (event.target.matches("button")) {  // below are new variables when a button is clicked
-        const action = event.target.dataset.action;  //new variable for condition to access all action buttons  
-        const keyContent = event.target.innerText; // new variable representing the key value
-        const numberDisplay = display.innerText; // new variable for the number displayed on screen and to use to update everytime we click a button
-        const lastKeyClicked = calculator.dataset.lastKeyClicked; // custom data attribute which will be useful when dealing with conditions
+    if (event.target.matches("button")) {  // We are targeting the whole calculator__key div and checking if what we click matches to button. 
         
-        if (!action) {   // If button does not have an action attribute then it must be a number. 
-            calculator.dataset.lastKeyClicked = "number"; //If it is a number button, we update the data-last-key-clicked attribute to number
+        // Below are new variables to be reuse.
+        const action = event.target.dataset.action;  
+        const keyContent = event.target.innerText; 
+        const numberDisplay = display.innerText; 
+        const lastKeyClicked = calculator.dataset.lastKeyClicked; 
+        
+        if (!action) {   // If button does not have an action attribute then it must be a number. If it is a number button, we update the data-last-key-clicked attribute to number. Help to keep on track what has just been clicked
+            calculator.dataset.lastKeyClicked = "number"; 
+
+            //if previous clicked is an operator or percentage or calculate or if display is 0. Calculator will show what we just click. if not then it will add the new number click with the number on display.
             if (numberDisplay === "0" || lastKeyClicked === "operator" || lastKeyClicked === "percentage" || lastKeyClicked === "calculate") { 
-                display.innerText = keyContent; // if display shows 0 or last clicked button is a percentage or operator or calculate then display number clicked on screen
-            } else {     // if display shows other numbers then concantenate new clicked button and update display
+                display.innerText = keyContent;
+            } else {    
                 display.innerText = numberDisplay + keyContent;
             }
         }
@@ -26,27 +30,28 @@ const keyClick = (event) => {
             }
         }
 
-        // If data-action attribute = addition, subtraction, multiplication, division, set data-last-key-clicked to operator.
+        // If data-action attribute = addition, subtraction, multiplication, division, set data-last-key-clicked to operator. If an operation button is clicked, the number on the displayed will be stored in data-first-value attribute to be use when calculating. 
         if (action === "addition" || action === "subtraction" || action === "multiplication" || action === "division") {
             calculator.dataset.lastKeyClicked = "operator"; 
-            calculator.dataset.firstValue = numberDisplay;  //create custom data-first-value atribute to whatever the display show to store for when we are calculating
-            if (action === "addition") { // if action attribute = addition, create custom data-operator and set to addition to be use in calculation
+            calculator.dataset.firstValue = numberDisplay;  
+            // updating data-operation attribute with what the button is
+            if (action === "addition") { 
                 calculator.dataset.operator = "addition";
-            } else if (action === "subtraction") { // if action attribute = subtraction, create custom data-operator and set to subtraction to be use in calculation
+            } else if (action === "subtraction") { 
                 calculator.dataset.operator = "subtraction";
-            } else if (action === "multiplication") { // if action attribute = multiplication, create custom data-operator and set to multiplication to be use in calculation
+            } else if (action === "multiplication") { 
                 calculator.dataset.operator = "multiplication";
-            } else if (action === "division") { // if action attribute = division, create custom data-operator and set to division to be use in calculation
+            } else if (action === "division") { 
                 calculator.dataset.operator = "division";
         }
     }
 
         if (action === "calculate") { // if action attribute = calculate, set last-key-clicked = calculate. 
             calculator.dataset.lastKeyClicked = "calculate";
-            //all variables are important for calculating functions. 
-            const firstValue = calculator.dataset.firstValue; // create new variable to retrieve value before operation button was clicked
-            const secondValue = numberDisplay; // new variable to take value of current display
-            const operator = calculator.dataset.operator; // new variable for operator to take operator attribute.
+            //all variables below are important for calculating functions. 
+            const firstValue = calculator.dataset.firstValue; 
+            const secondValue = numberDisplay; 
+            const operator = calculator.dataset.operator; 
 
             // when calculating, we need parameters. These parameters are named as such to be reused. 
             const calculateResult = (number1, operator, number2) => {
@@ -62,7 +67,7 @@ const keyClick = (event) => {
                 }
                 return result;
             }
-            display.innerText = calculateResult(firstValue, operator, secondValue); //call calculatingResult function and updating display with its return
+            display.innerText = calculateResult(firstValue, operator, secondValue); //call calculatingResult function and updating display with its result.
         }
         
         if (action === "percentage") { // if action attribute = percentage then update last-key-clicked = percentage. 
@@ -80,10 +85,10 @@ const keyClick = (event) => {
         
         if (action === "negativepositive") { // if action attribute = negativepositive, update last-key-clicked = negative. 
             calculator.dataset.lastKeyClicked = "negative";
-            if (numberDisplay != "0") { // only work if number display is not 0 as 0 a is natural number
-                if (!numberDisplay.includes("-")) { // if display does not have negative sign then we can add it in.
-                display.innerText = "-" + numberDisplay; // display update with negative sign
-                } else if (numberDisplay.includes("-")) { // if display does have negative sign then we remove it to turn it back to positive
+            if (numberDisplay != "0") { // If display is not 0 then check if display number has negative sign. if it doesnt then it will add it into the display if clicked. If it does have a negative on the display then it will remove if it is clicked.
+                if (!numberDisplay.includes("-")) { 
+                display.innerText = "-" + numberDisplay; 
+                } else if (numberDisplay.includes("-")) { 
                 display.innerText = numberDisplay.replace("-", "");
                 }
             }
