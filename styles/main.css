@@ -9,14 +9,16 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #EEEBD3;
   color: #EEEBD3;
+  background-image: url(../wallpapersden.com_artistic-landscape-view_1920x1080.jpg);
+  background-size: cover;
 }
 body .calculator {
   width: 70%;
   background-color: #08002e;
   border: 5px solid black;
   border-radius: 20px;
+  opacity: 0.8;
 }
 body .calculator .calculator__display {
   background-color: #BB6B00;

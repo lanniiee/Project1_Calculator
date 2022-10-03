@@ -16,13 +16,15 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: $secondary-color;
     color: $secondary-color;
+    background-image: url(../wallpapersden.com_artistic-landscape-view_1920x1080.jpg);
+    background-size: cover;
     .calculator {
         width: 70%;
         background-color: $primary-color;
         border: 5px solid black;
         border-radius: 20px;
+        opacity: 0.8;
         .calculator__display {
             background-color: $equalbtn-color;
             height: 90px;
