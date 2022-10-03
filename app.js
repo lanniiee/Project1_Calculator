@@ -26,7 +26,7 @@ const keyClick = (event) => {
             }
         }
 
-        //If data-action attribute = addition, subtraction, multiplication, division, set data-last-key-clicked to operator.
+        // If data-action attribute = addition, subtraction, multiplication, division, set data-last-key-clicked to operator.
         if (action === "addition" || action === "subtraction" || action === "multiplication" || action === "division") {
             calculator.dataset.lastKeyClicked = "operator";   //This will be used when calculating
             calculator.dataset.firstValue = numberDisplay;  //create custom data-first-value atribute to whatever the display show to store for when we are calculating
