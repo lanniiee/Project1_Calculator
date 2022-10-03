@@ -2,10 +2,10 @@
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const display = document.querySelector(".calculator__display");
+const key = document.querySelector("button");
 
 // Functions
 const keyClick = (event) => {
-    if (event.target.matches("button")) {  // below are new variables when a button is clicked
         const action = event.target.dataset.action;  //new variable for condition to access all action buttons  
         const keyContent = event.target.innerText; // new variable representing the key value
         const numberDisplay = display.innerText; // new variable for the number displayed on screen and to use to update everytime we click a button
@@ -89,7 +89,7 @@ const keyClick = (event) => {
             }
         }
     }
-}
+
 
 // AddEventListener 
-keys.addEventListener("click", keyClick);
+key.addEventListener("click", keyClick);
