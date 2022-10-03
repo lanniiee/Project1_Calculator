@@ -42,15 +42,17 @@ const keyClick = (event) => {
         }
     }
 
-        if (action === "calculate") {
+        if (action === "calculate") { // if action attribute = calculate, set last-key-clicked = calculate. 
             calculator.dataset.lastKeyClicked = "calculate";
-            const firstValue = calculator.dataset.firstValue;
-            const secondValue = numberDisplay;
-            const operator = calculator.dataset.operator;
+            //all variables are important for calculating functions. 
+            const firstValue = calculator.dataset.firstValue; // create new variable to retrieve value before operation button was clicked
+            const secondValue = numberDisplay; // new variable to take value of current display
+            const operator = calculator.dataset.operator; // new variable for operator to take operator attribute.
 
+            // when calculating, we need parameters. These parameters are named as such to be reused. 
             const calculateResult = (number1, operator, number2) => {
-                let result = "";
-                if (operator === "addition") {
+                let result = "";       //declare new variable to update result of calculation
+                if (operator === "addition") { 
                     result = parseFloat(number1) + parseFloat(number2);
                 } else if (operator === "subtraction") {
                     result = parseFloat(number1) - parseFloat(number2);
@@ -61,14 +63,14 @@ const keyClick = (event) => {
                 }
                 return result;
             }
-            display.innerText = calculateResult(firstValue, operator, secondValue);
+            display.innerText = calculateResult(firstValue, operator, secondValue); //call calculatingResult function and updating display with its return
         }
         
-        if (action === "percentage") {
+        if (action === "percentage") { // if action attribute = percentage then update last-key-clicked = percentage. 
             calculator.dataset.lastKeyClicked = "percentage";
-            if (lastKeyClicked != "percentage") {
+            if (!numberDisplay.includes("%")) {
                 const formatedNumber = parseFloat(numberDisplay) * 100;
-            display.innerText = formatedNumber + "%";
+                display.innerText = formatedNumber + "%";
             }
         }
         
