@@ -2,48 +2,42 @@
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const display = document.querySelector(".calculator__display");
-const decimal = document.querySelector("#decimal");
-
-let previousDisplay = [];
-let currentDisplay = [];
-
 
 // Functions
 const keyClick = (event) => {
-    if (event.target.matches("button")) {  
-        const key = event.target;   // need to write out pseudoCode
-        const action = key.dataset.action;
-        const keyContent = key.innerText;
-        const numberDisplay = display.innerText;
-        const lastKeyClicked = calculator.dataset.lastKeyClicked; 
+    if (event.target.matches("button")) {  // below are new variables when a button is clicked
+        const key = event.target;   // new variable for event.target to be reuse. represent calculator key/button
+        const action = key.dataset.action;  //new variable for condition to access all action buttons
+        const keyContent = key.innerText; // new variable representing the key value
+        const numberDisplay = display.innerText; // new variable for the number displayed on screen
+        const lastKeyClicked = calculator.dataset.lastKeyClicked; // custom data attribute which will be useful when dealing with conditions
         
-        if (!action) {   
-            calculator.dataset.lastKeyClicked = "number";
-            if (numberDisplay === "0" || lastKeyClicked === "operator" || lastKeyClicked === "percentage") { 
-                display.innerText = keyContent; 
-            } else {      
+        if (!action) {   // If button does not have an action attribute then it must be a number. 
+            calculator.dataset.lastKeyClicked = "number"; //If it is a number button, we update the data-last-key-clicked attribute to number
+            if (numberDisplay === "0" || lastKeyClicked === "operator" || lastKeyClicked === "percentage" || lastKeyClicked === "calculate") { 
+                display.innerText = keyContent; // if display shows 0 or last clicked button is a percentage or operator or calculate then display number clicked on screen
+            } else {     // if display shows other numbers then concantenate new clicked button and update display
                 display.innerText = numberDisplay + keyContent;
             }
         }
 
-        if (action === "decimal") {
+        if (action === "decimal") { // if button has data-action attribute = decimal then check if display include ".". if it doesnt then concatenante with decimal.
             if (!numberDisplay.includes(".")) {
-                display.innerText = numberDisplay + ".";
-            } else {
-                display.innerText = numberDisplay;
+                display.innerText = numberDisplay + keyContent;
             }
         }
 
+        //If data-action attribute = addition, subtraction, multiplication, division, set data-last-key-clicked to operator.
         if (action === "addition" || action === "subtraction" || action === "multiplication" || action === "division") {
-            calculator.dataset.lastKeyClicked = "operator";    
-            calculator.dataset.firstValue = numberDisplay; 
-            if (action === "addition") {
+            calculator.dataset.lastKeyClicked = "operator";   //This will be used when calculating
+            calculator.dataset.firstValue = numberDisplay;  //create custom data-first-value atribute to whatever the display show to store for when we are calculating
+            if (action === "addition") { // if action attribute = addition, create custom data-operator and set to addition to be use in calculation
                 calculator.dataset.operator = "addition";
-            } else if (action === "subtraction") {
+            } else if (action === "subtraction") { // if action attribute = subtraction, create custom data-operator and set to subtraction to be use in calculation
                 calculator.dataset.operator = "subtraction";
-            } else if (action === "multiplication") {
+            } else if (action === "multiplication") { // if action attribute = multiplication, create custom data-operator and set to multiplication to be use in calculation
                 calculator.dataset.operator = "multiplication";
-            } else if (action === "division") {
+            } else if (action === "division") { // if action attribute = division, create custom data-operator and set to division to be use in calculation
                 calculator.dataset.operator = "division";
         }
     }
